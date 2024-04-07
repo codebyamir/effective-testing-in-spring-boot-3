@@ -1,6 +1,7 @@
 package com.steelcityamir.commerce.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
@@ -17,18 +18,19 @@ public class Product {
     private ZonedDateTime createdOn;
 
     @Column(nullable = false)
-    private String name;
+    private String productName;
 
     @Column(nullable = false)
     private BigDecimal unitPrice;
 
     @Column(length = 2000)
-    private String description;
+    private String productDescription;
 
     @Column
     private String imageUrl;
 
     @Column
+    @Min(value = 0)
     private int unitsInStock;
 
     public Long getId() {
@@ -47,12 +49,12 @@ public class Product {
         this.createdOn = createdOn;
     }
 
-    public String getName() {
-        return name;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
     public BigDecimal getUnitPrice() {
@@ -63,12 +65,12 @@ public class Product {
         this.unitPrice = unitPrice;
     }
 
-    public String getDescription() {
-        return description;
+    public String getProductDescription() {
+        return productDescription;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setProductDescription(String productDescription) {
+        this.productDescription = productDescription;
     }
 
     public String getImageUrl() {

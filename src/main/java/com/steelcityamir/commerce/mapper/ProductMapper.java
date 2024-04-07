@@ -10,7 +10,8 @@ import java.util.List;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.WARN, unmappedSourcePolicy = ReportingPolicy.IGNORE)
 public interface ProductMapper {
-    @Mapping(target = "unitPrice", expression = "java(product.getUnitPrice().toString())", ignore = true)
+    @Mapping(target = "unitPrice", expression = "java(product.getUnitPrice().toString())")
     ProductDto entityToDto(Product product);
+
     List<ProductDto> entityListToDtoList(List<Product> products);
 }
