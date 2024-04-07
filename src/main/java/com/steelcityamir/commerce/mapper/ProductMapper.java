@@ -4,13 +4,13 @@ import com.steelcityamir.commerce.dto.ProductDto;
 import com.steelcityamir.commerce.entity.Product;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.ReportingPolicy;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.WARN, unmappedSourcePolicy = ReportingPolicy.IGNORE)
 public interface ProductMapper {
-    @Mapping(target = "unitPrice", expression = "java(product.getUnitPrice().toString())")
+    @Mapping(target = "unitPrice", expression = "java(product.getUnitPrice().toString())", ignore = true)
     ProductDto entityToDto(Product product);
-    Product dtoToEntity(ProductDto productDto);
     List<ProductDto> entityListToDtoList(List<Product> products);
 }

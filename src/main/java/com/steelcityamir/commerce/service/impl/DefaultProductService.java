@@ -25,7 +25,7 @@ public class DefaultProductService implements ProductService {
         Product product = productRepository.findById(id).orElse(null);
 
         if (product == null) {
-            throw new ProductNotFoundException("not found");
+            throw new ProductNotFoundException(id);
         }
 
         return mapper.entityToDto(product);
