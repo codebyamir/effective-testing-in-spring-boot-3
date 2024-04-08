@@ -7,4 +7,5 @@ import java.util.List;
 public interface ProductService {
     ProductDto getProduct(long id);
     List<ProductDto> getAllProducts();
+    List<ProductDto> searchByKeyword(String keyword);
 }

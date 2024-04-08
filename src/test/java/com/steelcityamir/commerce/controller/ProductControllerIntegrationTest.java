@@ -1,7 +1,5 @@
 package com.steelcityamir.commerce.controller;
 
-import jakarta.transaction.Transactional;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -10,7 +8,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -31,10 +30,10 @@ class ProductControllerIntegrationTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.length()").value(3))
                 .andExpect(jsonPath("$.[0].id").value(1))
-                .andExpect(jsonPath("$.[0].productName").value("Product 1"))
-                .andExpect(jsonPath("$.[0].productDescription").value("Description of Product 1"))
-                .andExpect(jsonPath("$.[0].unitPrice").value("19.99"))
-                .andExpect(jsonPath("$.[0].unitsInStock").value(100))
+                .andExpect(jsonPath("$.[0].productName").value("Apple MacBook Air 13 in."))
+                .andExpect(jsonPath("$.[0].productDescription").value("M3 processor, 8GB RAM, 256GB SSD"))
+                .andExpect(jsonPath("$.[0].unitPrice").value("1099.00"))
+                .andExpect(jsonPath("$.[0].unitsInStock").value(3500))
                 .andExpect(jsonPath("$.[1].id").value(2))
                 .andExpect(jsonPath("$.[1].productName").value("Product 2"))
                 .andExpect(jsonPath("$.[1].productDescription").value("Description of Product 2"))

@@ -36,4 +36,10 @@ public class DefaultProductService implements ProductService {
         List<Product> products = productRepository.findAll();
         return mapper.entityListToDtoList(products);
     }
+
+    @Override
+    public List<ProductDto> searchByKeyword(String keyword) {
+        List<Product> products = productRepository.findByProductNameContainingIgnoreCase(keyword);
+        return mapper.entityListToDtoList(products);
+    }
 }
