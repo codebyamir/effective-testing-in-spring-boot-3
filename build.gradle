@@ -6,7 +6,7 @@ plugins {
     id 'jacoco'
 }
 
-group = 'com.steelcityamir'
+group = 'com.codebyamir'
 version = '0.0.1-SNAPSHOT'
 
 java {
