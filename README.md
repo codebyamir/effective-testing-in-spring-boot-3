@@ -1,5 +1,5 @@
 [![Java CI with Gradle](https://github.com/codebyamir/effective-testing-in-spring-boot-3/actions/workflows/gradle.yml/badge.svg)](https://github.com/codebyamir/effective-testing-in-spring-boot-3/actions/workflows/gradle.yml)
-
+[![codecov](https://codecov.io/gh/codebyamir/effective-testing-in-spring-boot-3/graph/badge.svg?token=EZRPG6MC5D)](https://codecov.io/gh/codebyamir/effective-testing-in-spring-boot-3)
 # Effective Testing in Spring Boot 3
 
 This is the reference application for my eBook "Effective Testing in Spring Boot 3".
