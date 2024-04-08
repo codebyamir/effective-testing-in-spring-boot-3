@@ -52,7 +52,7 @@ tasks.named('test') {
 
 jacocoTestReport {
     reports {
-        xml.required = false
+        xml.required = true // required for CodeCov tool
         csv.required = false
         html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
     }
