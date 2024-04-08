@@ -27,6 +27,12 @@ jobs:
     - name: Build with Gradle Wrapper
       run: ./gradlew build
 
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v4.0.1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        slug: codebyamir/effective-testing-in-spring-boot-3
+
   dependency-submission:
 
     runs-on: ubuntu-latest
