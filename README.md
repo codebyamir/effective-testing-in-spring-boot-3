@@ -4,6 +4,8 @@
 
 This is the reference application for my eBook "Effective Testing in Spring Boot 3".
 
+The application provides a REST API for a standard eCommerce site with features such as product search, cart management, and order placement.
+
 ## Technologies
 - Java 21
 - Spring Boot 3.2.4
