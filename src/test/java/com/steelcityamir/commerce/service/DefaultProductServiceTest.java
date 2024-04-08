@@ -11,6 +11,12 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.math.BigDecimal;
+import java.time.Clock;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -64,5 +70,30 @@ class DefaultProductServiceTest {
 
         verify(productRepository).findById(PRODUCT_ID);
         verify(productMapper).entityToDto(product);
+    }
+
+    @Test
+    void searchByKeyword_foundResults() {
+        String searchKeyword = "apple";
+
+        Product product = new Product();
+        product.setId(PRODUCT_ID);
+        product.setProductName("Apple MacBook Pro");
+        product.setUnitPrice(BigDecimal.valueOf(999.99));
+
+        ProductDto productDto = new ProductDto();
+        productDto.setId(PRODUCT_ID);
+        productDto.setProductName("Apple MacBook Pro");
+        productDto.setUnitPrice("999.99");
+
+        when(productRepository.findByProductNameContainingIgnoreCase(searchKeyword)).thenReturn(List.of(product));
+        when(productMapper.entityListToDtoList(any(List.class))).thenReturn(List.of(productDto));
+
+        List<ProductDto> results = service.searchByKeyword(searchKeyword);
+
+        assertThat(results).hasSize(1);
+        assertThat(results.get(0).getId()).isEqualTo(product.getId());
+        assertThat(results.get(0).getProductName()).isEqualTo(product.getProductName());
+        assertThat(results.get(0).getUnitPrice()).isEqualTo(product.getUnitPrice().toString());
     }
 }
